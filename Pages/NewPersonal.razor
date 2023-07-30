@@ -1,0 +1,114 @@
+@page "/newPersonal"
+@using Microsoft.Extensions.Logging
+@using LifeCenter.Entities
+@inject ILogger<NewPersonal> Logger
+
+<EditForm Model="@personal" OnValidSubmit="@HandleSubmit" class="container columns is-multiline is-primary">
+
+    <DataAnnotationsValidator />
+    <label class="column is-one-third">
+        <p class="mb-2"> Nombre </p>
+        <p class="control has-icons-left">
+            <InputText @bind-Value="personal.Name" class="input" placeholder="Isabel"/>
+            <span class="icon  is-left">
+                <i class="fa-solid fa-user-tie"></i>
+            </span>
+            <ValidationMessage For="@(() => personal.Name)" />
+        </p>
+    </label>
+    <label class="column is-one-third">
+        <p class="mb-2"> Apellido Paterno </p>
+        <p class="control ">
+            <InputText @bind-Value="personal.MiddleName" class="input" placeholder="Flores"/>
+            <ValidationMessage For="@(() => personal.MiddleName)" />
+        </p>
+    </label>
+    <label class="column is-one-third">
+        <p class="mb-2"> Apellido Materno </p>
+        <p class="control ">
+            <InputText @bind-Value="personal.LastName" class="input"  placeholder="Rodriguez"/>
+            <ValidationMessage For="@(() => personal.LastName)" />
+        </p>
+    </label>
+    <Label class="column is-one-third">
+        <p class="mb-2"> Puesto </p>
+        <p class="control has-icons-left">
+            <div class="select is-fullwidth ">
+                <InputSelect @bind-Value="personal.Rol">
+                    @foreach (var rol in Enum.GetValues(typeof(Rol))){  <option value="@rol">@rol</option>  }
+                </InputSelect>
+            </div>
+            <span class="icon is-left">
+                <i class="fa-solid fa-users-rectangle"></i>
+            </span>
+            <ValidationMessage For="@(() => personal.Rol)" />
+        </p>
+    </Label>
+    <label class="column is-one-third">
+        <p class="mb-2"> Email </p>
+        <p class="control has-icons-left">
+            <InputText @bind-Value="personal.Email" class="input"  placeholder="info@lifecenter.com"/>
+            <span class="icon  is-left">
+                <i class="fa-solid fa-envelope"></i>
+            </span>
+            <ValidationMessage For="@(() => personal.Email)" />
+        </p>
+    </label>
+    <label class="column is-one-third">
+        <p class="mb-2"> Telefono </p>
+        <p class="control has-icons-left">
+            <InputNumber @bind-Value="personal.Phone" class="input"  placeholder="123-456-7890"/>
+            <span class="icon  is-left">
+                <i class="fa-solid fa-phone"></i>
+            </span>
+            <ValidationMessage For="@(() => personal.Phone)" />
+        </p>
+    </label>
+    <label class="column is-one-third">
+        <p class="mb-2"> Usuario </p>
+        <p class="control has-icons-left">
+            <InputText @bind-Value="personal.Username" class="input"  placeholder="IsaFlores2023"/>
+            <span class="icon  is-left">
+                <i class="fa-solid fa-clipboard-user"></i>
+            </span>
+            <ValidationMessage For="@(() => personal.Username)" />
+        </p>
+    </label>
+    <label class="column is-one-third ">
+        <p class="mb-2"> Contraseña </p>
+        <p class="control has-icons-left  ">
+            <InputText @bind-Value="personal.Password" type="password" class="input" placeholder="LIFE2023center!"/>
+            <span class="icon is-left">
+                <i class="fa-solid fa-key"></i>
+            </span>
+            <ValidationMessage For="@(() => personal.Password)" />
+        </p>
+    </label>
+    <label class="column is-one-third">
+        <p class="mb-2"> Confirmar Contraseña </p>
+        <p class="control has-icons-left">
+            <InputText @bind-Value="personal.ConfirmPassword" type="password" class="input"placeholder="LIFE2023center!"/>
+            <span class="icon  is-left">
+                <i class="fa-solid fa-user-secret"></i>
+            </span>
+            <ValidationMessage For="@(() => personal.ConfirmPassword)" />
+        </p>
+    </label>
+    <div class="column is-one-third is-offset-two-thirds field is-grouped">
+        <button type="submit" class="button is-fullwidth mx-1 is-primary">Aceptar</button>
+        <button type="reset" class="button is-fullwidth mx-1 is-light">Cancelar</button>
+    </div>
+</EditForm>
+
+@code {
+    private Personal personal = new();
+
+    private void HandleSubmit()
+    {
+        Logger.LogInformation("HandleSubmit called");
+        personal.FechaModificado = DateTime.Now;
+        personal.FechaCreado = DateTime.Now;
+        Logger.LogInformation("Usuario: {Parameter1}", personal.Stringify());
+        // Process the form
+    }
+}
