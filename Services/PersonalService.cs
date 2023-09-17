@@ -11,22 +11,18 @@ public interface IPersonalService
 {
     Task<IEnumerable<Personal>> GetAll();
     Task<Personal> GetById(int id);
-    Task Create(CreateRequest model);
-    Task Update(int id, UpdateRequest model);
+    Task Create(Personal model);
+    Task Update(int id, Personal model);
     Task Delete(int id);
 }
 
 public class PersonalService : IPersonalService
 {
     private IPersonalRepository _personalRepository;
-    private readonly IMapper _mapper;
 
-    public PersonalService(
-        IPersonalRepository personalRepository,
-        IMapper mapper)
+    public PersonalService(IPersonalRepository personalRepository)
     {
         _personalRepository = personalRepository;
-        _mapper = mapper;
     }
 
     public async Task<IEnumerable<Personal>> GetAll()
@@ -44,14 +40,14 @@ public class PersonalService : IPersonalService
         return personal;
     }
 
-    public async Task Create(CreateRequest model)
+    public async Task Create(Personal personal)
     {
         // validate
-        if (await _personalRepository.GetByName(model.Name!) != null)
-            throw new AppException("Personal with the Name '" + model.Name + "' already exists");
+        if (await _personalRepository.GetByName(personal.Name!) != null)
+            throw new AppException("Personal with the Name '" + personal.Name + "' already exists");
 
         // map model to new personal object
-        var personal = _mapper.Map<Personal>(model);
+        //var personal = _mapper.Map<Personal>(model);
 
         // hash password
         //personal.PasswordHash = BCrypt.HashPassword(model.Password);
@@ -60,7 +56,7 @@ public class PersonalService : IPersonalService
         await _personalRepository.Create(personal);
     }
 
-    public async Task Update(int id, UpdateRequest model)
+    public async Task Update(int id, Personal model)
     {
         var personal = await _personalRepository.GetById(id);
 
@@ -72,15 +68,16 @@ public class PersonalService : IPersonalService
         if (nameChanged && await _personalRepository.GetByName(model.Name!) != null)
             throw new AppException("Personal with the name '" + model.Name + "' already exists");
 
+        model.Id = personal.Id;
         // hash password if it was entered
         //if (!string.IsNullOrEmpty(model.Password))
             //personal.PasswordHash = BCrypt.HashPassword(model.Password);
 
         // copy model props to personal
-        _mapper.Map(model, personal);
+        //_mapper.Map(model, personal);
 
         // save personal
-        await _personalRepository.Update(personal);
+        await _personalRepository.Update(model);
     }
 
     public async Task Delete(int id)

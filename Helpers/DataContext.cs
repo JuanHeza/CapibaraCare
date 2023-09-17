@@ -47,11 +47,18 @@ public class DataContext
                 CREATE TABLE IF NOT EXISTS Personal (
                     Id INT NOT NULL AUTO_INCREMENT,
                     Name VARCHAR(255),
-                    FechaCreado TIMESTAMP,
-                    FechaModificado TIMESTAMP,
-                    CreadoPor INT,
-                    ModificadoPor INT,
+                    MiddleName VARCHAR(255),
+                    LastName VARCHAR(255),
+                    Username VARCHAR(255),
+                    Password VARCHAR(255),
+                    Email VARCHAR(255),
+                    Phone INT,
+                    Extension INT,
                     Rol INT,
+                    FechaCreado TIMESTAMP,
+                    CreadoPor INT,
+                    FechaModificado TIMESTAMP,
+                    ModificadoPor INT,
                     PRIMARY KEY (Id)
                 );
             """;

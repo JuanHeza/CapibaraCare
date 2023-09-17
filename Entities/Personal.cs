@@ -31,6 +31,7 @@ public class Personal{
     [Required(ErrorMessage = "Numero Requerido")]
     [RegularExpression("^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
     public int? Phone { get; set; }
+    public int? Extension { get; set; }
     
     [Required]
     [EnumDataType(typeof(Rol), ErrorMessage = "nada")]

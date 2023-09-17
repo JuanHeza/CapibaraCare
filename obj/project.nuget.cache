@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Hcp06GJz1kk+xKhlMx7DXHefmrtRREFaghV1zfn4+nRMwflESD/Y8i7fViUQvdotk3U7+huUsQmAM1WrgJBYgw==",
+  "dgSpecHash": "wB08aUPEI6vNBGE5DIQSpoYN+7vPAtOFSDOJUc2acCpcTVUqT6c7BcAALs5kmc0U4LszfINQn5NJg2Pu/5iEXQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Novasys\\Downloads\\LifeCenter\\LifeCenter.csproj",
+  "projectFilePath": "E:\\CapibaraCare\\LifeCenter.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Novasys\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Novasys\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

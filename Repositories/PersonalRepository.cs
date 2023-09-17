@@ -56,8 +56,8 @@ public class PersonalRepository : IPersonalRepository
     {
         using var connection = _context.CreateConnection();
         var sql = """
-            INSERT INTO Personal (Name, Rol, FechaCreado, FechaModificado, CreadoPor, ModificadoPor)
-            VALUES (@Name, @Rol, @FechaCreado, @FechaModificado, @CreadoPor, @ModificadoPor)
+            INSERT INTO Personal ( Name, MiddleName, LastName, Username, Password, Email, Phone, Extension, Rol, FechaCreado, CreadoPor, FechaModificado, ModificadoPor)
+            VALUES (@Name, @MiddleName, @LastName, @Username, @Password, @Email, @Phone, @Extension, @Rol, @FechaCreado, @CreadoPor, @FechaModificado, ModificadoPor)
         """;
         await connection.ExecuteAsync(sql, user);
     }
@@ -68,13 +68,20 @@ public class PersonalRepository : IPersonalRepository
         var sql = """
             UPDATE Personal
             SET Name = @Name,
+                MiddleName = @MiddleName,
+                LastName = @LastName,
+                Username = @Username,
+                Password = @Password,
+                Email = @Email,
+                Phone = @Phone,
+                Extension = @Extension,
                 Rol = @Rol,
-                FechaCreado = @FechaCreado, 
-                FechaModificado = @FechaModificado, 
-                CreadoPor = @CreadoPor, 
+                FechaCreado = @FechaCreado,
+                CreadoPor = @CreadoPor,
+                FechaModificado = @FechaModificado,
                 ModificadoPor = @ModificadoPor
             WHERE Id = @Id
-        """;
+        """; 
         await connection.ExecuteAsync(sql, user);
     }
 

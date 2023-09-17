@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Novasys\\Downloads\\LifeCenter\\LifeCenter.csproj": {}
+    "E:\\CapibaraCare\\LifeCenter.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Novasys\\Downloads\\LifeCenter\\LifeCenter.csproj": {
+    "E:\\CapibaraCare\\LifeCenter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Novasys\\Downloads\\LifeCenter\\LifeCenter.csproj",
+        "projectUniqueName": "E:\\CapibaraCare\\LifeCenter.csproj",
         "projectName": "LifeCenter",
-        "projectPath": "C:\\Users\\Novasys\\Downloads\\LifeCenter\\LifeCenter.csproj",
+        "projectPath": "E:\\CapibaraCare\\LifeCenter.csproj",
         "packagesPath": "C:\\Users\\Novasys\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Novasys\\Downloads\\LifeCenter\\obj\\",
+        "outputPath": "E:\\CapibaraCare\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Novasys\\AppData\\Roaming\\NuGet\\NuGet.Config"
